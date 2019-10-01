@@ -137,8 +137,4 @@ public class AR225
     {
         Evaluation = evaluation;
     }
-
-
-
-
 }
