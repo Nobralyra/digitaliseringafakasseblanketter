@@ -14,7 +14,7 @@ public class Validation //custom valideringsklasse
                 regex = "^\\d{4}$";
                 break;
             case CPR:
-                //Ved faktisk ikke om den her er korret og virker som den skal. Kan ikke få den til at fejle med tal, men bogstaver fanger den
+                //Backenden fanger flere fejl end javascriptet gør
                 regex = "^(?:(?:31(?:0[13578]|1[02])|(?:30|29)(?:0[13-9]|1[0-2])|(?:0[1-9]|1[0-9]|2[0-8])(?:0[1-9]|1[0-2]))[0-9]{2}-?[0-9]|290200-?[4-9]|2902(?:(?!00)[02468][048]|[13579][26])-?[0-3])[0-9]{3}|000000-?0000$"; //https://www.computerworld.dk/eksperten/spm/1012877
                 break;
             case ALPHANUMERIC:
@@ -26,6 +26,7 @@ public class Validation //custom valideringsklasse
             case MONEY:
                 regex = "^[+-]?[0-9]{1,3}(?:[0-9]*(?:[.,][0-9]{2})?|(?:,[0-9]{3})*(?:\\.[0-9]{2})?|(?:\\.[0-9]{3})*(?:,[0-9]{2})?)$"; //https://stackoverflow.com/questions/354044/what-is-the-best-u-s-currency-regex?answertab=active#tab-top // https://stackoverflow.com/questions/15334422/java-regular-expression-for-money?lq=1
                 //Ved ikke om det havde været bedre at udnytte javas egen inbygget methoder til at tjekke beløb... https://stackoverflow.com/questions/15586099/numberformat-parse-fails-for-some-currency-strings
+
                 break;
         }
 

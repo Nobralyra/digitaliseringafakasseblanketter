@@ -6,9 +6,8 @@ public enum ValidationEnum
     CPR,
     ALPHANUMERIC,
     DATE,
-    MONEY,
-    NUMBER
+    MONEY
 }
 
 //Ikke nødvendig efter at den digitale signatur eller udprintning er valgt fra
-// PHONE,
+// PHONE, NUMBER,

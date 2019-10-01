@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Brugt bootstrap til css og html https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
+    <!-- Brugt bootstrap til css og html og javascript https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
 
     <!-- Impoteret fra flere cdn'er som er Content delivery network (https://en.wikipedia.org/wiki/Content_delivery_network) -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
 
-    <!-- Jquery er et libery der gør det let at selecte og lave metoder i javascript - begrænset brugt! https://code.jquery.com/ -->
+    <!-- Jquery, er lavet af John Resig, er et libery der gør det let at selecte og lave metoder i javascript - begrænset brugt! https://code.jquery.com/ -->
     <script src="http://oss.maxcdn.com/jquery/1.11.1/jquery.min.js" crossorigin="anonymous"></script>
 
-    <!-- Grunden til man ikke skulle bruge en cdn er at man ikke har 100% kontrol over af siden kode, men hoster de liberies der er almindelig brugt -->
+    <!-- Grunden til man ikke skulle bruge en cdn er at man ikke har 100% kontrol over af den fil man henter fra cdn'en, men hoster de liberies der er almindelig brugt -->
 
 
     <title>AR225</title>
@@ -57,7 +57,7 @@
                     <label class="col-sm-3 control-label">CPR-nummer</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" name="SocialSecurityNumber" placeholder="ddmmyy-####"
-                               pattern="^(?:(?:31(?:0[13578]|1[02])|(?:30|29)(?:0[13-9]|1[0-2])|(?:0[1-9]|1[0-9]|2[0-8])(?:0[1-9]|1[0-2]))[0-9]{2}-?[0-9]|290200-?[4-9]|2902(?:(?!00)[02468][048]|[13579][26])-?[0-3])[0-9]{3}|000000-?0000$"
+                               pattern="^(?:(?:31(?:0[13578]|1[02])|(?:30|29)(?:0[13-9]|1[0-2])|(?:0[1-9]|1[0-9]|2[0-8])(?:0[1-9]|1[0-2]))[0-9]{2}-?[0-9]|290200-?[4-9]|2902(?:(?!00)[02468][048]|[13579][26])-?[0-3])[0-9]{3}|000000-?0000$^(?:(?:31(?:0[13578]|1[02])|(?:30|29)(?:0[13-9]|1[0-2])|(?:0[1-9]|1[0-9]|2[0-8])(?:0[1-9]|1[0-2]))[0-9]{2}-?[0-9]|290200-?[4-9]|2902(?:(?!00)[02468][048]|[13579][26])-?[0-3])[0-9]{3}|000000-?0000$"
                                data-bv-regexp-message="The social security number is invalid - must be valid!" required />
                     </div>
                 </div>
@@ -158,23 +158,19 @@
                 <!-- Hvordan får jeg det her til at skulle udfyldes og ikke bare hoppe over??? -->
                 <!-- Det udførte arbejde (skal altid udfyldes) begin -->
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Det udførte arbejde (skal altid udfyldes)</label>
+                    <label class="col-sm-10 control-label">Det udførte arbejde (skal altid udfyldes)</label>
                     <div class="col-sm-4">
-                        <textarea rows="4" cols="50" class="form-control" name="Work" placeholder="tekst">
-
-                        </textarea>
+                        <textarea rows="4" cols="50" class="form-control" name="Work" placeholder="tekst" required ></textarea>
                     </div>
                 </div>
                 <!-- Det udførte arbejde (skal altid udfyldes) end -->
 
                 <!-- Eventuelle supplerende oplysninger begin -->
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Eventuelle supplerende oplysninger som revisor skal afgive i henhold til bekendtgørelse om statsautoriserede og
+                    <label class="col-sm-10 control-label">Eventuelle supplerende oplysninger som revisor skal afgive i henhold til bekendtgørelse om statsautoriserede og
                         registrerede revisorers erklæringer mv.</label>
                     <div class="col-sm-4">
-                        <textarea rows="4" cols="50" class="form-control" name="Evaluation" placeholder="tekst">
-
-                        </textarea>
+                        <textarea rows="4" cols="50" class="form-control" name="Evaluation" placeholder="tekst"></textarea>
                     </div>
                 </div>
                 <!-- Eventuelle supplerende oplysninger end -->
@@ -187,58 +183,66 @@
                 </div>
                 <!-- From Revicer end -->
 
-                <input class="btn btn-primary" type="submit" value="Submit">
+                <!-- Submitknappen start -->
+                <div class="servervalidation"></div>
+                <input class="btn btn-primary js-submit" type="submit" value="Submit">
+                <!-- Submitknappen slut -->
 
             </form>
         </section>
         <aside>
             <!-- Vejledning -->
             <div class="form-group">
-                <h3> <br>Vejledning </h3>
+                <h3> Vejledning </h3>
                 <p>
                     Skemaet skal være modtaget i a-kassen senest 3
-                    måneder efter regnskabsårets afslutning.<br>
-
-                    <br>Begrebet virksomhedens "dækningsbidrag 1" er det
+                    måneder efter regnskabsårets afslutning.
+                </p>
+                <p> Begrebet virksomhedens "dækningsbidrag 1" er det
                     regnskabstekniske begreb dækningsbidrag 1. Det vil
                     sige, at virksomhedens nettoomsætning, jf.
                     årsregnskabsloven, fratrækkes det vareforbrug, som
                     kan henføres direkte til varesalget. Øvrige variable
                     omkostninger som fx salgs- og administrationsomkostninger kan ikke opgøres som en del af
-                    vareforbruget.<br>
-
-                    <br>Bortforpagtningsafgift skal ikke indgå i opgørelsen af
+                    vareforbruget.
+                </p>
+                <p>
+                    Bortforpagtningsafgift skal ikke indgå i opgørelsen af
                     dækningsbidrag 1. Dette skyldes, at indtægt fra
                     bortforpagtning ikke hidrører fra selskabets primære
-                    drift.<br>
-
-                    <br>Oplysningerne i skemaet skal være attesteret af en
+                    drift.
+                </p>
+                <p>
+                    Oplysningerne i skemaet skal være attesteret af en
                     registreret revisor eller en statsautoriseret revisor, jf.
                     bekendtgørelse nr. 1421 om selvstændig virksomhed
-                    samtidig med efterløn.<br>
-
-                    <br>Opmærksomheden henledes på, at hvis revisor skal
+                    samtidig med efterløn.
+                </p>
+                <p>
+                    Opmærksomheden henledes på, at hvis revisor skal
                     tage forbehold i sin erklæring efter reglerne i
                     bekendtgørelse om statsautoriserede og registrerede
                     revisorers erklæringer, kan attestationen ikke
-                    anerkendes, og blanketten er derfor uanvendelig.<br>
-
-                    <br>Har virksomheden haft en nettoomsætning der er
+                    anerkendes, og blanketten er derfor uanvendelig.
+                </p>
+                <p>
+                    Har virksomheden haft en nettoomsætning der er
                     mindre end indtægtsgrænsen for dækningsbidrag 1 i
                     det aktuelle år (i år 2016: 75.978 kr.), kan revisor
                     undlade at opgøre dækningsbidrag 1. Revisor skal da
                     blot attestere, at det oplyste nettoomsætningsbeløb er
-                    korrekt.<br>
-
-                    <br>A-kassen kan oplyse dig om, hvad indtægtsgrænsen
+                    korrekt.
+                </p>
+                <p>
+                    A-kassen kan oplyse dig om, hvad indtægtsgrænsen
                     for dækningsbidrag 1 er i det aktuelle år. A-kassen
                     kan også give dig eksempler på, hvordan
                     dækningsbidrag 1 beregnes.
-
                 </p>
-                <p>
-                <h3> Underskrift </h3>
 
+                <h4> Underskrift </h4>
+
+                <p>
                     Husk dato og underskrift. Bemærk, at du skriver
                     under på tro og love. Oplysninger, der viser sig at
                     være urigtige, kan medføre krav om tilbagebetaling
@@ -246,31 +250,35 @@
                     1, 2 og 12, og § 87, stk. 1 og 2, i lov om arbejdsløsløshedsforsikring m.v. Du kan også blive meldt til politiet.
 
                 </p>
-                <p>
-                <h3> Kontrol og anden information </h3>
 
+                <h4> Kontrol og anden information </h4>
+
+                <p>
                     De oplysninger, som du giver på denne blanket, vil
                     blive kontrolleret. Det kan fx ske ved hjælp af
                     oplysninger fra arbejdsgivere og myndigheder.
-                    Kontrol kan også ske ved registersamkøring.<br>
-
-                    <br>I henhold til persondataloven skal det oplyses, at
-                    <br>- a-kassen kan indhente oplysninger fra
-                    din arbejdsgiver til brug for afklaring af dine
-                    rettigheder og pligter,<br>
-
-                    <br>- a-kassen registrerer modtagne oplysnin-
-                    ger,<br>
-
-                    <br>- a-kassen kan i kontroløjemed benytte oplysnin-
-                    ger i a-kassen og SKAT's indkomstregister til
-                    registersamkøring,<br>
-
-                    <br>- du har ret til at få at vide, hvilke oplysninger
-                    a-kassen registrerer om dig, og<br>
-
-                    <br>- du kan kræve forkerte oplysninger rettet.
+                    Kontrol kan også ske ved registersamkøring.
                 </p>
+                <p>
+                    I henhold til persondataloven skal det oplyses, at
+                </p>
+                <ul>
+                    <li>- a-kassen kan indhente oplysninger fra
+                    din arbejdsgiver til brug for afklaring af dine
+                        rettigheder og pligter,</li>
+
+                    <li>- a-kassen registrerer modtagne oplysnin-
+                    ger,</li>
+
+                    <li>- a-kassen kan i kontroløjemed benytte oplysnin-
+                    ger i a-kassen og SKAT's indkomstregister til
+                    registersamkøring,</li>
+
+                    <li>- du har ret til at få at vide, hvilke oplysninger
+                    a-kassen registrerer om dig, og</li>
+
+                    <li>- du kan kræve forkerte oplysninger rettet.</li></ul>
+
                 <h3> Er du i tvivl? - Spørg a-kassen </h3>
             </div>
             <!-- From Vejledning end -->
@@ -296,8 +304,25 @@
 
 <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
 <script type="text/javascript">
+    //Bootstrap med javascript til at validere på clientsiden
     $(document).ready(function() {
         $('#meetingForm').bootstrapValidator();
+    });
+
+    //Hvad der skal ske når submitknappen bliver klikket på. Hvis handlermetoden @PostMapping("AR225/validate") er tom, erstater den bodyen med "Success!".
+    //Hvis handlermetoden @PostMapping("AR225/validate") har noget i sig, er valideringen på  clientsiden gået galt og serversiden smider tilbage hvilket felt,
+    //der har forkert input. Den lader sidens fyldte felter stå, men skriver over submitknappen hvad for et felt der har forkert input.
+    $(".js-submit").click(function(event){
+        event.preventDefault();
+        $.post( "AR225/validate", $( "#meetingForm" ).serialize(), function()
+        
+        {
+            $("body").html("Success!");
+        })
+            .fail(function(xhr)
+            {
+                $(".servervalidation").html(xhr.responseText);
+            });
     });
 </script>
 
